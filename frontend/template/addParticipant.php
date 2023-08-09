@@ -12,7 +12,8 @@
 
                     <div class="div5a">
                         <!-- <div class="intitule4">Prénom</div> -->
-                        <div class="champ_participant"><input type="text" id="prenom" name="prenom" placeholder="Prenom"></div>
+                        <div class="champ_participant">
+                        <input type="text" id="prenom" name="prenom" placeholder="Prenom" value=""></div>
                     </div>
 
                     <div class="div5ba">

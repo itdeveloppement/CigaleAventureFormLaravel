@@ -63,18 +63,20 @@ const showData = {
 
     // recupertation des données des champs à afficher
     selectDatasParticipant: function(bulletin) {
+        
             for (const participant of bulletin.participant) {
+                id = participant.id;
                 prenom = participant.NomPrenom;
                 taille = participant.taille.libelle;
                 poid = participant.poid.libelle;
                 age = participant.age.libelle;
 
-                showData.createEltParticipant(prenom, taille, poid, age);
+                showData.createEltParticipant(id, prenom, taille, poid, age);
             }
         },
 
     // creation des elements des participants et remplissage des champs
-    createEltParticipant: function(prenom, taille, poid, age) {
+    createEltParticipant: function(id, prenom, taille, poid, age) {
 
         // creation des elements d'affichage des participants
         const divElt01 = document.createElement("div");
@@ -125,7 +127,7 @@ const showData = {
         divElt11.addEventListener("click", function() {
         modal.classList.add("active");
 
-        showData.createEltParticipantModale(prenom, taille, poid, age);
+        showData.createEltParticipantModale(id);
 
         });
         
@@ -154,38 +156,76 @@ const showData = {
     // GESTION DE LA MODALE
 
     // creation des elements du dom pour la modale pour un participant
-    createEltParticipantModale: function(prenom, taille, poid, age) {
+    createEltParticipantModale: function(id) {
+
+        
+        console.log(id);
+        // recuperation des données de la base de donnée
+        // a faire
         
         // creation des elements d'affichage des participants
         const divElt01 = document.createElement("div");
         divElt01.classList.add("div5bModal");
 
+        // champ prenom
         const divElt1 = document.createElement("div");
         divElt1.classList.add("div5a");
+        
         const divElt2 = document.createElement("div");
         divElt2.classList.add("champ_participant");
-        divElt2.textContent = prenom;
+              
+        const divElt2M = document.createElement("input");
+            divElt2M.type = "text";
+            divElt2M.id = "prenom";
+            divElt2M.name = "prenom";
+            divElt2M.placeholder="Prenom";
+            divElt2M.value = prenom;
 
+        // champ age
         const divElt3 = document.createElement("div");
         divElt3.classList.add("div5ba");
+        
         const divElt4 = document.createElement("div");
-        divElt4.id ="age";
         divElt4.classList.add("champ_participant");
-        divElt4.textContent=age;
 
+        const divElt4s = document.createElement("select");
+            divElt4s.type = "text";
+            divElt4s.id = "dropDownAges";
+            divElt4s.name = "ages";
+          
+        const divElt4o = document.createElement("option");
+            // divElt4o.value = "1"; //item.id;
+            // divElt4o.option.textContent = "10 ans"; //item.ages;
+        
+        // champs taille
         const divElt5 = document.createElement("div");
         divElt5.classList.add("div5bb");
+        
         const divElt6 = document.createElement("div");
-        divElt6.id ="taille";
         divElt6.classList.add("champ_participant");
-        divElt6.textContent=taille;
 
+        const divElt6s = document.createElement("select");
+            divElt6s.type = "text";
+            divElt6s.id = "dropDownTailles";
+            divElt6s.name = "tailles";
+          
+        const divElt6o = document.createElement("option");
+            // divElt6o.value = "1"; //item.id;
+            // divElt6o.option.textContent = "10 ans"; //item.ages;
+
+        // champs poids
         const divElt7 = document.createElement("div");
         divElt7.classList.add("div5bc");
+        
         const divElt8 = document.createElement("div");
-        divElt8.id = "poids";
         divElt8.classList.add("champ_participant");
-        divElt8.textContent = poid;
+
+        const divElt8s = document.createElement("select");
+            divElt8s.type = "text";
+            divElt8s.id = "dropDownPoids";
+            divElt8s.name = "poids";
+          
+        const divElt8o = document.createElement("option");
 
         //element boutons
         const divElt9 = document.createElement("div");
@@ -201,18 +241,25 @@ const showData = {
         const formEltPartcipant = document.querySelector("#affichageParticipant2");
         
         formEltPartcipant.append(divElt01);
-        
+        // champ prenom
         divElt01.append(divElt1);
         divElt1.append(divElt2);
-
+        divElt2.append(divElt2M);
+        // chazmp ages
         divElt01.append(divElt3);
         divElt3.append(divElt4);
-
+        divElt4.append(divElt4s);
+        divElt4s.append(divElt4o);
+        // champ tailles
         divElt01.append(divElt5);
         divElt5.append(divElt6);
-
+        divElt6.append(divElt6s);
+        divElt6s.append(divElt6o)
+        // champ poids
         divElt01.append(divElt7);
         divElt7.append(divElt8);
+        divElt8.append(divElt8s);
+        divElt8s.append(divElt8o)
 
         // elements buttons
         divElt01.append(divElt9);
