@@ -11,8 +11,10 @@ const app = {
 init: function() {
     console.log('bienvenue ds app');
     showData.init();
-    showDropDown.init();
-    createParticipant.init();
+    // showDropDown.init();
+    // updeteParticipant.modalOpenClose();
+    
+    
 }
 
 }

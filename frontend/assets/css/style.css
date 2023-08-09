@@ -1,9 +1,10 @@
 body { 
-    background-color: #F5F5F5;;
+    background-color: rgba(221, 219, 219, 0.5);
     padding-top: 1%;
     padding-left: 1%;
     padding-right: 1%;
     font-size: 12px;
+    
 }
 
 .container {
@@ -70,7 +71,6 @@ body {
     text-align: center;
     padding-top: 10px;
     padding-bottom: 10px;
- 
 }
 
 .text_presentation_vert {
@@ -125,9 +125,12 @@ body {
     gap: 10px;
     background-color: #ffffff;  
     border-radius: 5px 5px 5px 5px;
+    width: 100%;
+
 }
 .div5a, .div5ba, .div5bb, .div5bc  {
     display: flex; 
+   
     gap:5px;
     margin-top: 3px; 
     margin-bottom: 2px; 
@@ -283,7 +286,6 @@ input select {
     background-color: #78270e75;
 }
 
-
 .div7  {
     background-color: #95C01F;
     color: white;
@@ -298,6 +300,10 @@ input select {
 }
 
 .box_activite_ecran2, .text_titre_ecran2 {
+    display: none;
+}
+
+.elementHidden {
     display: none;
 }
 
@@ -318,7 +324,6 @@ input select {
  
     .div5a, .div5b, .div5ba, .div5bb, .div5bc  {
         display: flex;
-        
         width: 100%;
     }
 
@@ -339,31 +344,38 @@ input select {
             margin: auto;      
         }
     }
+}
+
+/* gestion modale */
+
+/* Styles généraux pour assombrir l'arrière-plan */
 
 
-    /* gestion modale */
+/* Styles pour la modale */
+.modal {
+    width: 0;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: white;
+    overflow-x: hidden;
+    transition: 0.5s;
+}
 
-    /**
- * Modal
- */
-.modal-dialog {
-    position: absolute;
-    top: 5%;
-    left: 35%;
-    width: 30%;
-    height: 30%;
-    z-index: 10;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #ebede7;
-  }
-  .modal-dialog.show {
-    display: flex;
-  }
-  @media (min-width: 720px) {
-    .modal-dialog form {
-      width: 100%;
-    }
-  }
-}   
+/* Styles pour le contenu de la modale */
+.modal-contenu {
+    padding: 20px;
+}
+
+/* Styles pour l'ouverture de la modale */
+.modal.active {
+    width: 300px;
+}
+
+.div5bModal {
+    gap: 10px;
+    background-color: #ffffff;  
+    border-radius: 5px 5px 5px 5px;
+    width: 100%;
+}

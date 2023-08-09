@@ -35,6 +35,8 @@ class FormController extends Controller
      public function addParticipant(Request $request)
      {
          // recup des données de l'url
+         $bulletin_id = $request->input('bulletin_id');
+         $activite_id = $request->input('activite_id');
          $name = $request->input('prenom');
          $age = $request->input('ages');
          $taille = $request->input('poids');
@@ -44,14 +46,13 @@ class FormController extends Controller
          $participant = new Participant();
  
          // mise a jour des propiétés
+         $participant->bulletin_id = $bulletin_id;
+         $participant->activite_id = $activite_id;
          $participant->NomPrenom = $name;
          $participant->age_id = $age;
          $participant->poid_id = $taille;
          $participant->taille_id = $poids;
-
          
-        
- 
          // verification. Si les données sont sauvegarder retour code 201 sinon 500
          if($participant->save()) {
              return response()->json($participant, 201);

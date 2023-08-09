@@ -317,7 +317,6 @@ input select {
     .div52a  {
        
         
-        
     }
     .div52c  {
         display: flex;
@@ -331,8 +330,6 @@ input select {
     }
     .champ_participant {
         width: 100%;
-       
-       
     }
 
     @media screen and (min-width: 900px) {
