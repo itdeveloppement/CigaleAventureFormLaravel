@@ -38,23 +38,14 @@ class FormController extends Controller
         $bulletin = Bulletin::findOrFail($bulletinId);
         $participant = $bulletin->participants()->findOrFail($participantId);
          
-        var_dump($participant);
+        // var_dump($participant);
         // Mettre à jour les champs du participant avec les données reçues
 
         $participant->NomPrenom = $request->input('prenom');
-        
-
         $participant->age_id = $request->input('ages');
-    
-
         $participant->poid_id = $request->input('poids');
-       
-
         $participant->taille_id = $request->input('tailles');
-       
-
         $participant->save();
-
 
         //$participant->update($request->all());
 

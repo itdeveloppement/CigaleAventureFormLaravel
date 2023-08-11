@@ -76,13 +76,15 @@
                     -->  
             </div>
         </form>  
+
+        <div>
+                <?php include "template/modal.php"; ?>
+                <?php include "template/footer.php"; ?>
+        </div>
     </div>
        
         <script src="../assets/js/showData.js"></script>
         <script src="../assets/js/showDropDown.js"></script>
         <script src="../assets/js/app.js"></script>
 
-        <div>
-                <?php include "template/modal.php"; ?>
-                <?php include "template/footer.php"; ?>
-        </div>
+        

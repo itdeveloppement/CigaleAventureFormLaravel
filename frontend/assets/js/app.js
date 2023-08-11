@@ -9,7 +9,7 @@ const app = {
 // appel des fonction a l'ouverture du document
 init: function() {
     showData.init();
-    console.log("ok")
+   
     
 }
 

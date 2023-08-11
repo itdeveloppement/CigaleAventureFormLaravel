@@ -1,14 +1,14 @@
 const showData = {
 
     init: function() {
-        console.log("ok")
+        
         // recuperation des donnéers de la bdd (bulletin et participants)
         fetch(app.baseEndpoint.endpoint)
             .then( function(response) {
                 return response.json();
             })
             .then(function(bulletin) {
-                console.log(bulletin);
+                
                 showData.extractData(bulletin);
                 showData.selectDatasParticipant(bulletin);
                 
@@ -19,7 +19,6 @@ const showData = {
 
     // extraction des données
     extractData: function (bulletin){
-        console.log("ok");
    
             // champs non affichés 
            id_participant = bulletin.participant[0].bulletin_id;
@@ -58,27 +57,56 @@ const showData = {
             for (const participant of bulletin.participant) {
                 idBulletin = bulletin.id;
                 idParticipant = participant.id;
+                
+ /*
+                prenom = participant.NomPrenom;
+               
+                if (participant.NomPrenom === null){
+                    prenom = "";
+                } else {  prenom = participant.NomPrenom;}
+           
+                // taille = participant.taille.libelle;
+                if (participant.taille === null){
+                    taille = "";
+                } else { taille = participant.taille.libelle;}
+
+                // poid = participant.poid.libelle;
+                if (participant.poid === null){
+                    poid = "";
+                } else {poid = participant.poid.libelle;}
+
+                // age = participant.age.libelle;
+                if (participant.age === null){
+                    age = "";
+                } else { age = participant.age.libelle;}
+ */
+ // console.log(participant.poid.libelle);
                 prenom = participant.NomPrenom;
                 taille = participant.taille.libelle;
                 poid = participant.poid.libelle;
                 age = participant.age.libelle;
-              
+
+        // console.log(prenom, taille, poid, age);
                 showData.createEltParticipant(idParticipant, idBulletin, prenom, taille, poid, age);
             }
         },
 
     // creation des elements des participants et remplissage des champs
     createEltParticipant: function(idParticipant, idBulletin, prenom, taille, poid, age) {
-
+        
         // creation des elements d'affichage des participants
         const divElt01 = document.createElement("div");
         divElt01.classList.add("div5b");
+        
 
         const divElt1 = document.createElement("div");
         divElt1.classList.add("div5a");
         const divElt2 = document.createElement("div");
+        divElt2.id ="prenomParticipant";
         divElt2.classList.add("champ_participant");
         divElt2.textContent = prenom;
+        divElt2.classList.add(idParticipant);
+     
 
         const divElt3 = document.createElement("div");
         divElt3.classList.add("div5ba");
@@ -86,6 +114,8 @@ const showData = {
         divElt4.id ="age";
         divElt4.classList.add("champ_participant");
         divElt4.textContent=age;
+        divElt4.classList.add(idParticipant);
+       
 
         const divElt5 = document.createElement("div");
         divElt5.classList.add("div5bb");
@@ -93,6 +123,8 @@ const showData = {
         divElt6.id ="taille";
         divElt6.classList.add("champ_participant");
         divElt6.textContent=taille;
+        divElt6.classList.add(idParticipant);
+        
 
         const divElt7 = document.createElement("div");
         divElt7.classList.add("div5bc");
@@ -100,20 +132,35 @@ const showData = {
         divElt8.id ="poids";
         divElt8.classList.add("champ_participant");
         divElt8.textContent=poid;
+        divElt8.classList.add(idParticipant);
+       
 
-        //element boutons
+        //element boutons modifier
         const divElt9 = document.createElement("div");
         divElt9.classList.add("champ_participant");
         divElt9.classList.add("div5bd");
+        
         
         const divElt11 = document.createElement("buttom");
         divElt11.classList.add("boutons");
         divElt11.textContent="Modifier";
         divElt11.id = "ouvrirModal";
+        divElt11.classList.add(idParticipant);
 
-        
-        // pose ecouteur evenement bouton modale ouverture
-        divElt9.addEventListener("click", function() {
+        // pose ecouteur evenement sur le bouton modifer pour ouverture modale
+        divElt11.addEventListener("click", function() {
+
+            // rendre invisible bouton modifer avec modif clas css 
+            const divElt11 = document.getElementsByClassName('div5bd');
+            // il faut transformer htmlCollection en tableau pour l'effacer
+            var array = Array.from(divElt11); 
+            // lecture du tabelau
+            for (const elt of array) {
+            
+            // modif class css
+            elt.style.display = 'none';
+
+            }
             showData.openModal(idParticipant, idBulletin);
             
         })
@@ -135,10 +182,12 @@ const showData = {
         divElt01.append(divElt7);
         divElt7.append(divElt8);
 
-        // elements buttons
+        // elements buttons modifier
         divElt01.append(divElt9);
         divElt9.append(divElt11);
     },  
+
+    
 
     // GESTION DE LA MODALE
 
@@ -168,7 +217,6 @@ const showData = {
         poid = participant.poid_id;
 
         showData.createEltParticipantModal(prenom, age, taille, poid, idParticipant, idBulletin);
-
     },
 
     // creation des elements du dom pour la modale pour un participant
@@ -250,7 +298,21 @@ const showData = {
 
         // ecouteur evenement sur btm valider
         divElt9.addEventListener('click', function(){
+            modal.classList.remove("active");
             showData.valueChampsModal(idParticipant, idBulletin);
+            showData.deleteEltModal()
+            
+            // ajout de la classe pour afficher les bouton modifier
+            const divElt11 = document.getElementsByClassName('div5bd');
+            // il faut transformer htmlCollection en tableau pour l'effacer
+            var array = Array.from(divElt11); 
+            // lecture du tabelau
+            for (const elt of array) {
+           
+           // a jout de la class
+            elt.style.display = 'flex';
+            } 
+
          });
         
         // hiarchisation des elements du dom
@@ -267,7 +329,7 @@ const showData = {
         divElt1.append(divElt2);
         divElt2.append(divElt2M);
 
-        // chazmp ages
+        // champ ages
         divElt01.append(divElt3);
         divElt3.append(divElt4);
         divElt4.append(divElt4s);
@@ -294,32 +356,38 @@ const showData = {
         const fermerModal = document.getElementById("fermerModal");
         fermerModal.addEventListener("click", function() {
             modal.classList.remove("active");
-            showData.deleteEltModal();
+            showData.deleteEltModal()
+           
+            // ajout de la classe pour afficher les bouton modifier
+            const divElt11 = document.getElementsByClassName('div5bd');
+            // il faut transformer htmlCollection en tableau pour l'effacer
+            var array = Array.from(divElt11); 
+            // lecture du tabelau
+            for (const elt of array) {
+           // a jout de la class
+            elt.style.display = 'flex';
+            } 
         });
         
     },  
-
+    // ferme la modale
     closeModal: function() {
         modalElt = document.getElementById('modal');
         modalEltclassList.remove("active");
     },
 
+    // suprime les element du dom de la modal
     deleteEltModal: function () {
         // supression du dom affichage participant ds la modale
         eltDomDelete = document.querySelector("#affichageParticipant2 .div5bModal");
         eltDomDelete.remove(); 
     },
 
+    // ouvre la modale
     openModal: function(idParticipant, idBulletin) {
         const modal = document.getElementById("modal");
         modal.classList.add("active");
         showData.dataParticipantModal(idParticipant, idBulletin);
-
-        // NE FONCTIONNE PAS supression ecouteur sur bouton moidifer
-        // suppression des ecouteur tant que la modale est ouverte. 
-            // divElt11 = document.querySelector('.div5bd');
-            // divElt11.removeEventListener('click', showData.openModal);
-      
         },
 
     // recuperation des valeurs des champs
@@ -335,7 +403,6 @@ const showData = {
     // envoi des donnée à la bbd
     updateParticipant: async function (idParticipant, idBulletin, name, age, taille, poids){
 
-        console.log(idBulletin, idParticipant);
             
 
             // envoi des donnée a la base
@@ -349,19 +416,78 @@ const showData = {
                 {
                     prenom: name,
                     ages: age,
-                    tailles: poids,
-                    poids: taille,
+                    tailles: taille,
+                    poids: poids,
                 })
             }
         );
-        const participant = await response.json();
-        return participant;
+            const participant = await response.json();
+            showData.deleteEltParticipant()
+            showData.init();
+
+            /* --------------------------------------------------
+        // recuperation participant de l'id current
+        idCurrent = participant.id
+
+        console.log(participant);
+
+        // recuperation pour l'idCurrent de l'htmlcollection avec age, poids ...deleteEltParticipant. d'un participant
+        eltHTMLCollection = document.getElementsByClassName(idCurrent);
+        // transformer htmlCollection en tableau
+        var eltArray = Array.from(eltHTMLCollection); 
+        // lecture du tabelau
+        console.log(eltArray);
+
+            for (const elt of eltArray) {
+                console.log(elt)
+
+                if(participant.NomPrenom){
+                    eltPrenom = document.getElementById("prenomParticipant");
+                    eltPrenom.value = participant.NomPrenom;
+                }
+
+                if(participant.taille_id){
+                    eltTaille = document.getElementById("taille");
+                    eltTaille.value = participant.taille_id;
+                }
+
+                if(participant.age_id){
+                    eltAge = document.getElementById("age");
+                    eltAge.value = participant.age_id;
+                }
+
+                if(participant.poid_id){
+                    eltPoids = document.getElementById("poids");
+                    eltPoids.value=participant.poid_id;
+                }
+                
+            } 
+        // mise a jour des champs
+        eltPrenom = document.getElementById("prenomParticipant");
+        console.log(eltPrenom.value);
         
-        // showData.init();
-        // showData.closeModal();
+        // showData. updateParticipant(idParticipant, idBulletin);
+        // showData.init(idParticipant, idBulletin);
+          -------------------------------------------------------  */
+        }, 
+
+
+       // suprime les element du dom de la liste de participant
+    deleteEltParticipant: function () {
+        // supression du dom ade la liste de participânt
+        eltDomParent = document.querySelector(".affichageParticipant");
+        console.log(eltDomParent);
+        // console.log(eltDomDelete);
+        eltDomEnfant = eltDomParent.children;
+        console.log(eltDomEnfant);
+
+        var eltArray = Array.from(eltDomEnfant); 
+        // lecture du tabelau
+        console.log(eltArray);
+
+        for (const elt of eltArray) {
+            elt.remove();
         }
-
-
-    
+    },
 }
 
