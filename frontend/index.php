@@ -8,7 +8,7 @@
         <div class="image_montagne" >
             
             <img class="image_logo" src="assets/images/CigAve_bandeau.png" alt="image de montagnes et vallées">
-            <a class="text_faq" href="">F.A.Q</a>
+            <!-- <a class="text_faq" href="">F.A.Q</a> -->
 
         </div>
 

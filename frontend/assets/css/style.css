@@ -32,6 +32,7 @@ body {
     bottom: 0px;  
 }
 
+
 .text_faq {
     position: absolute;
     top: 10px;
@@ -238,7 +239,7 @@ input select {
     color: #95C01F;
     font-style: italic;
 }
-
+/* ne sert pas 
 .bouton_envoyer {
     background-color: #95C01F;; 
     color: white;
@@ -262,6 +263,7 @@ input select {
 .bouton_envoyer:hover {
     background-color: #78270e75;
 }
+*/
 /*#95C01F*/
 .boutons {
     background-color: #d5d5d2;; 
