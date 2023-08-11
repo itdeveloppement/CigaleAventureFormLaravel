@@ -11,15 +11,16 @@ const showData = {
                 
                 showData.extractData(bulletin);
                 showData.selectDatasParticipant(bulletin);
+               
                 
                 // return bulletin
             });
             // condition si erreur ?    
     },
 
-    // extraction des données
-    extractData: function (bulletin){
-   
+    // extraction des données et afichage
+    extractData: function (bulletin, dateFormatee){
+        console.log(dateFormatee);  
             // champs non affichés 
            id_participant = bulletin.participant[0].bulletin_id;
            document.getElementById("participant_id1").textContent = id_participant;
@@ -45,9 +46,42 @@ const showData = {
             document.getElementById("activite2").textContent = activite;
 
             dateActivite = bulletin.session.calendrier.heured;
-            document.getElementById("date1").textContent = dateActivite;       
-            document.getElementById("date2").textContent = dateActivite;        
+            
+            showData.dateFormat(dateActivite);     
         },
+
+        // affichage de la date au format
+        extractDataDate: function (dateFormatee){
+            document.getElementById("date1").textContent = dateFormatee;       
+            document.getElementById("date2").textContent = dateFormatee;
+        },
+
+        // mise au format de la date
+        dateFormat: function(dateActivite) {
+
+        // Date au format "2023-06-10 09:00:00"
+        const dateString = dateActivite;
+
+        // Créer un objet Date à partir de la chaîne de date
+        const dateObj = new Date(dateString);
+
+        // Tableaux pour traduire les mois et les jours de la semaine
+        const mois = ["janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre", "octobre", "novembre", "décembre"];
+        const jours = ["dimanche", "lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi"];
+
+        // Extraire le jour, le mois, l'année, les heures et les minutes
+        const jour = dateObj.getDate();
+        const moisIndex = dateObj.getMonth();
+        const annee = dateObj.getFullYear();
+        const heure = dateObj.getHours();
+        const minute = dateObj.getMinutes();
+
+        // Formatter la date
+        var dateFormatee = jour + " " + mois[moisIndex] + " " + annee + " à " + heure + "h" + (minute < 10 ? "0" : "") + minute;
+
+        showData.extractDataDate(dateFormatee);
+        },
+
 
         // LISTE DES PARTICIPANTS
 
@@ -58,7 +92,7 @@ const showData = {
                 idBulletin = bulletin.id;
                 idParticipant = participant.id;
                 
- /*
+
                 prenom = participant.NomPrenom;
                
                 if (participant.NomPrenom === null){
@@ -79,12 +113,6 @@ const showData = {
                 if (participant.age === null){
                     age = "";
                 } else { age = participant.age.libelle;}
- */
- // console.log(participant.poid.libelle);
-                prenom = participant.NomPrenom;
-                taille = participant.taille.libelle;
-                poid = participant.poid.libelle;
-                age = participant.age.libelle;
 
         // console.log(prenom, taille, poid, age);
                 showData.createEltParticipant(idParticipant, idBulletin, prenom, taille, poid, age);
@@ -97,49 +125,64 @@ const showData = {
         // creation des elements d'affichage des participants
         const divElt01 = document.createElement("div");
         divElt01.classList.add("div5b");
-        
+
+        const divElt001 = document.createElement("div");
+        divElt001.classList.add("text_titre_ecran");
+        divElt001.textContent = "Participant";
 
         const divElt1 = document.createElement("div");
         divElt1.classList.add("div5a");
-        const divElt2 = document.createElement("div");
-        divElt2.id ="prenomParticipant";
-        divElt2.classList.add("champ_participant");
-        divElt2.textContent = prenom;
-        divElt2.classList.add(idParticipant);
-     
+            const divElt2 = document.createElement("div");
+            divElt2.id ="prenomParticipant";
+            divElt2.classList.add("champ_participant");
+            divElt2.textContent = prenom;
+            divElt2.classList.add(idParticipant);
+            // si champ vide / valeur par defaut
+            if(prenom.length == 0) { 
+            divElt2.textContent="Prenom";
+            divElt2.classList.add("colorRed"); }
 
         const divElt3 = document.createElement("div");
         divElt3.classList.add("div5ba");
-        const divElt4 = document.createElement("div");
-        divElt4.id ="age";
-        divElt4.classList.add("champ_participant");
-        divElt4.textContent=age;
-        divElt4.classList.add(idParticipant);
+            const divElt4 = document.createElement("div");
+            divElt4.id ="age";
+            divElt4.classList.add("champ_participant");
+           
+            divElt4.textContent= age ;
+            divElt4.classList.add(idParticipant);
+            // si champ vide / valeur par defaut
+            if(age.length == 0) { 
+                divElt4.textContent="Age";
+                divElt4.classList.add("colorRed"); }
        
-
         const divElt5 = document.createElement("div");
         divElt5.classList.add("div5bb");
-        const divElt6 = document.createElement("div");
-        divElt6.id ="taille";
-        divElt6.classList.add("champ_participant");
-        divElt6.textContent=taille;
-        divElt6.classList.add(idParticipant);
+            const divElt6 = document.createElement("div");
+            divElt6.id ="taille";
+            divElt6.classList.add("champ_participant");
+            divElt6.textContent=taille;
+            divElt6.classList.add(idParticipant);
+            // si champ vide / valeur par defaut
+            if(taille.length == 0) { 
+                divElt6.textContent="Taille";
+                divElt6.classList.add("colorRed"); }
         
-
         const divElt7 = document.createElement("div");
         divElt7.classList.add("div5bc");
-        const divElt8 = document.createElement("div");
-        divElt8.id ="poids";
-        divElt8.classList.add("champ_participant");
-        divElt8.textContent=poid;
-        divElt8.classList.add(idParticipant);
+            const divElt8 = document.createElement("div");
+            divElt8.id ="poids";
+            divElt8.classList.add("champ_participant");
+            divElt8.textContent=poid;
+            divElt8.classList.add(idParticipant);
+            // si champ vide / valeur par defaut
+            if(poid.length == 0) { 
+                divElt8.textContent="Poids";
+                divElt8.classList.add("colorRed"); }
        
-
         //element boutons modifier
         const divElt9 = document.createElement("div");
         divElt9.classList.add("champ_participant");
         divElt9.classList.add("div5bd");
-        
         
         const divElt11 = document.createElement("buttom");
         divElt11.classList.add("boutons");
@@ -159,7 +202,6 @@ const showData = {
             
             // modif class css
             elt.style.display = 'none';
-
             }
             showData.openModal(idParticipant, idBulletin);
             
@@ -167,6 +209,9 @@ const showData = {
         
         // hiarchisation des elements du DOM pour la liste des participants
         const formEltPartcipant = document.querySelector("div.affichageParticipant");
+
+        // titre participant
+        formEltPartcipant.append(divElt001);
      
         formEltPartcipant.append(divElt01);
         
@@ -187,14 +232,11 @@ const showData = {
         divElt9.append(divElt11);
     },  
 
-    
-
     // GESTION DE LA MODALE
 
     // recuperation des donnée du participant en cours ds la modal
     dataParticipantModal: function (idParticipant, idBulletin){
         
-    
         // recuperation des données de la base de donnée
         bulletin = idBulletin;
         participant = idParticipant;
@@ -312,7 +354,6 @@ const showData = {
            // a jout de la class
             elt.style.display = 'flex';
             } 
-
          });
         
         // hiarchisation des elements du dom
@@ -339,7 +380,6 @@ const showData = {
         divElt5.append(divElt6);
         divElt6.append(divElt6s);
 
-      
         // champ poids
         divElt01.append(divElt7);
         divElt7.append(divElt8);
@@ -403,8 +443,6 @@ const showData = {
     // envoi des donnée à la bbd
     updateParticipant: async function (idParticipant, idBulletin, name, age, taille, poids){
 
-            
-
             // envoi des donnée a la base
             const response = await fetch(`http://localhost:8000/api/inscriptions/bulletin/${idBulletin}/participant/${idParticipant}`, 
             { 
@@ -429,20 +467,21 @@ const showData = {
         // recuperation participant de l'id current
         idCurrent = participant.id
 
-        console.log(participant);
+        // console.log(participant);
 
         // recuperation pour l'idCurrent de l'htmlcollection avec age, poids ...deleteEltParticipant. d'un participant
         eltHTMLCollection = document.getElementsByClassName(idCurrent);
         // transformer htmlCollection en tableau
         var eltArray = Array.from(eltHTMLCollection); 
         // lecture du tabelau
-        console.log(eltArray);
+        // console.log(eltArray);
 
             for (const elt of eltArray) {
-                console.log(elt)
+                // console.log(elt)
 
                 if(participant.NomPrenom){
-                    eltPrenom = document.getElementById("prenomParticipant");
+                    eltPrenom = document.getElementById("prenomParticipant ");
+                    console.log(eltPrenom);
                     eltPrenom.value = participant.NomPrenom;
                 }
 
@@ -471,20 +510,17 @@ const showData = {
           -------------------------------------------------------  */
         }, 
 
-
-       // suprime les element du dom de la liste de participant
+     // suprime les element du dom de la liste de participant
     deleteEltParticipant: function () {
         // supression du dom ade la liste de participânt
         eltDomParent = document.querySelector(".affichageParticipant");
-        console.log(eltDomParent);
+      
         // console.log(eltDomDelete);
         eltDomEnfant = eltDomParent.children;
-        console.log(eltDomEnfant);
 
         var eltArray = Array.from(eltDomEnfant); 
         // lecture du tabelau
-        console.log(eltArray);
-
+     
         for (const elt of eltArray) {
             elt.remove();
         }

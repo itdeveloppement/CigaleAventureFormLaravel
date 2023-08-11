@@ -45,12 +45,11 @@
 
             <!-- FORMULAIRE D'AFFICHAGE -->
         
-            <div class="text_titre_ecran2">liste des participants2</div>
+            <div class="text_titre_ecran2">Liste des participants</div>
             <!--  modification BDD / affichage sur tous les ecrans   -->
-            <div class="text_titre_ecran">Participant1</div>
-                    
+               
             <div class="affichageParticipant">
-            <!--
+            <!-- <div class="text_titre_ecran">Participant1</div>
                     <div  class="div5b">
                 
                         <div class="div5a">

@@ -1,10 +1,11 @@
 body { 
-    background-color: rgba(221, 219, 219, 0.5);
+    background-color: rgba(white);
     padding-top: 1%;
     padding-left: 1%;
     padding-right: 1%;
-    font-size: 12px;
-    
+    font-size: 13px;
+    margin-left: 5%;
+    margin-right: 5%;
 }
 
 .container {
@@ -82,7 +83,7 @@ body {
     display: flex;
     align-items: center;
     background-color:  #95C01F; 
-    font-size: 12px;
+    font-size: 15px;
     font-weight: bold;
     color: white;
     padding-top: 1px;
@@ -99,7 +100,7 @@ body {
     display: flex;
     align-items: center;
     background-color:  #95C01F; 
-    font-size: 12px;
+    font-size: 15px;
     font-weight: bold;
     color: white;
     padding-top: 1px;
@@ -132,15 +133,16 @@ body {
     display: flex; 
     gap:5px;
     margin-top: 3px; 
-    margin-bottom: 2px; 
+    margin-bottom: 3px; 
 }
+
 .text_titre_ecran {
     display: flex;
     align-items: center; 
     height: 25px;
     padding-left: 3px;
     padding-right: 3px;
-    font-size: 12px;
+    font-size: 15px;
     font-weight: bold;
     background-color: #95C01F; 
     color: white;
@@ -262,10 +264,10 @@ input select {
 }
 /*#95C01F*/
 .boutons {
-    background-color: #bbbcb7;; 
+    background-color: #d5d5d2;; 
     color: white;
     width: 100%;
-    height: 25px;
+    height: 100%;
     text-align: center;
     font-weight: bold;
     font-size: 15px;
@@ -289,12 +291,12 @@ input select {
     background-color: #95C01F;
     color: white;
     text-align: center;
-    font-size: 12px;
+    font-size: 15px;
     padding-top: 5px;
     padding-bottom: 3px;
     padding-left: 3px;
     padding-right: 3px; 
-    margin-top: 2px;
+    margin-top: 5px;
     border-radius: 5px 5px 5px 5px;
 }
 
@@ -311,10 +313,15 @@ input select {
     text-align: center;
 }
 
+.colorRed {
+    color: #95C01F;
+    font-weight: bold;
+    font-style: italic;
+}
+
 #dropDownAges {
     border: none; 
     text-align: center;
-    
 }
 
 #dropDownTailles {
@@ -334,13 +341,11 @@ input select {
     }
     
     .text_titre_ecran, .box_activite_ecran1, .intitule4 {
-        display: none;
-        
+        display: none;  
     }
 
     .text_titre_ecran2, .box_activite_ecran2 {
-        display: flex;
-       
+        display: flex;   
     }
  
     .div5a, .div5b, .div5ba, .div5bb, .div5bc  {

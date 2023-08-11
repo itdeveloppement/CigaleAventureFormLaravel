@@ -41,6 +41,11 @@ const showDropDown= {
     dropDownAges: function (dataDropDownAges, age){
     
         const dropDownAges = document.getElementById('dropDownAges');
+        // creation de la l'option (ligneµ/champ) - choisir -
+        const optionElt = document.createElement('option');
+        optionElt.value = -1;
+        optionElt.textContent = "- choisir -";
+        dropDownAges.appendChild(optionElt);
 
         dataDropDownAges.forEach(function (ages) {
             const optionElt = document.createElement('option');
@@ -59,6 +64,11 @@ const showDropDown= {
 
         const dropDownTailles = document.getElementById('dropDownTailles');
 
+        const optionElt = document.createElement('option');
+        optionElt.value = -1;
+        optionElt.textContent = "- choisir -";
+        dropDownTailles.appendChild(optionElt);
+
         dataDropDownTailles.forEach(function (tailles) {
             const optionElt = document.createElement('option');
             optionElt.value = tailles.id;
@@ -75,6 +85,11 @@ const showDropDown= {
     dropDownPoids: function (dataDropDownPoids, poid){
 
         const dropDownPoids = document.getElementById('dropDownPoids');
+
+        const optionElt = document.createElement('option');
+        optionElt.value = -1;
+        optionElt.textContent = "- choisir -";
+        dropDownPoids.appendChild(optionElt);
 
         dataDropDownPoids.forEach(function (poids) {
             const optionElt = document.createElement('option');
