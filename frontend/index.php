@@ -43,11 +43,8 @@
                     <div id="lieu2" class="intitule2"></div>
                 </div>       
 
-          
             <!-- FORMULAIRE D'AFFICHAGE -->
         
-        
-
             <div class="text_titre_ecran2">liste des participants2</div>
             <!--  modification BDD / affichage sur tous les ecrans   -->
             <div class="text_titre_ecran">Participant1</div>
@@ -78,22 +75,14 @@
                     </div>    
                     -->  
             </div>
-        </form>
-
-        
+        </form>  
+    </div>
+       
+        <script src="../assets/js/showData.js"></script>
+        <script src="../assets/js/showDropDown.js"></script>
+        <script src="../assets/js/app.js"></script>
 
         <div>
-                <!-- <buttom class="bouton_envoyer">Envoyer</buttom> -->
-                // <?php include "template/modal.php"; ?>
+                <?php include "template/modal.php"; ?>
                 <?php include "template/footer.php"; ?>
         </div>
-    </div>
-</body>
-
-        
-        <script src="../assets/js/showData.js"></script>
-        <script src="../assets/js/createParticipant.js"></script>
-        <script src="../assets/js/showDropDown.js"></script>
-        <script src="../assets/js/updeteParticipant.js"></script>
-        <script src="../assets/js/app.js"></script>
-</html>

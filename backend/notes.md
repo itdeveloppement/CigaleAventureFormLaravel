@@ -98,3 +98,41 @@ J'espère que ça aide!
        
     }
 
+
+
+
+    public function updateParticipant(Request $request, $bulletinId, $participantId)
+     {
+
+        // Rechercher le bulletin et le participant associé
+        $bulletin = Bulletin::findOrFail($bulletinId);
+        $participant = $bulletin->participants()->findOrFail($participantId);
+
+     
+         // recup des données de l'url
+         $bulletin_id = $request->input('bulletin_id');
+         $activite_id = $request->input('activite_id');
+         $name = $request->input('prenom');
+         $age = $request->input('ages');
+         $taille = $request->input('poids');
+         $poids = $request->input('tailles');
+ 
+         // instentiation du model
+         $participant = new Participant();
+ 
+         // mise a jour des propiétés
+         $participant->bulletin_id = $bulletin_id;
+         $participant->activite_id = $activite_id;
+         $participant->NomPrenom = $name;
+         $participant->age_id = $age;
+         $participant->poid_id = $taille;
+         $participant->taille_id = $poids;
+         
+         // verification. Si les données sont sauvegarder retour code 201 sinon 500
+         if($participant->save()) {
+             return response()->json($participant, 201);
+         } else {
+             return response()->json($participant, 500);
+         }
+     }
+

@@ -30,4 +30,15 @@ class Bulletin extends Model
         return $this->hasMany(Participant::class);
     }
 
+/**
+     * Methode pour recuperer un participant d'un bulletin
+     * 
+     * @return un participant
+     *  
+     * */ 
+    public function participants():HasMany
+    {  
+        return $this->hasMany(Participant::class);
+    }
+
 }

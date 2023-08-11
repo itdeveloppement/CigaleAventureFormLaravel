@@ -22,14 +22,22 @@ Route::get('/inscriptions/{id}', [FormController::class, 'bull'])->where('id', '
 // route pour recuperer toutes les infno des tables Age
 Route::get('/dropdown/ages', [DropDownController::class, 'dropDownAges']);
 
-// route pour recuperer toutes les infno des tables Age
+// route pour recuperer toutes les infno des tables tailles
 Route::get('/dropdown/tailles', [DropDownController::class, 'dropDownTailles']);
 
-// route pour recuperer toutes les infno des tables Age
+// route pour recuperer toutes les infno des tables poids
 Route::get('/dropdown/poids', [DropDownController::class, 'dropDownPoids']);
+
+// route pour recuperer un participant d'un bulletin
+Route::get('/inscriptions/bulletin/{bulletin}/participant/{participant}', [FormController::class,'participantBulletin']);
 
 // route pour ajouter un participant
 Route::post('/inscriptions', [FormController::class, 'addParticipant']);
+
+// route pour modifier un participant d'un bulletin
+Route::put('/inscriptions/bulletin/{bulletin}/participant/{participant}', [FormController::class,'updateParticipant']);
+
+
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();

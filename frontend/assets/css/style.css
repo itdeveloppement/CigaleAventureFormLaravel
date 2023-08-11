@@ -130,7 +130,6 @@ body {
 }
 .div5a, .div5ba, .div5bb, .div5bc  {
     display: flex; 
-   
     gap:5px;
     margin-top: 3px; 
     margin-bottom: 2px; 
@@ -307,6 +306,28 @@ input select {
     display: none;
 }
 
+#prenom {
+    border: none; 
+    text-align: center;
+}
+
+#dropDownAges {
+    border: none; 
+    text-align: center;
+    
+}
+
+#dropDownTailles {
+    border: none; 
+    text-align: center;
+}
+
+#dropDownPoids {
+    border: none; 
+    text-align: center;
+}
+
+
 @media screen and (min-width: 720px) {
     .container {
         width: 100vw;   
@@ -329,7 +350,7 @@ input select {
 
     .div5bd  {
         display: flex;
-        width: 30%;
+        width: 100%;
     }
 
     @media screen and (min-width: 900px) {

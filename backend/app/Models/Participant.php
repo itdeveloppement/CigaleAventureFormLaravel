@@ -9,8 +9,12 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Participant extends Model
 {
 
-    
-
+    protected $fillable = [
+        'NomPrenom',
+        'age_id',
+        'poid_id',
+        'taille_id',
+    ];
 
 /**
      * Methode pour recuperer le bulltins d'un participant

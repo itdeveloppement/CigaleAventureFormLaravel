@@ -1,8 +1,6 @@
 const showDropDown= {
 
-    init: function() {
-
-        console.log("Module de récupération des données des listes deroulantes")
+    init: function(age, taille, poid) {
 
         // recuperation des données pour la liste deroulante ages
         fetch ('http://localhost:8000/api/dropdown/ages') 
@@ -10,7 +8,9 @@ const showDropDown= {
                 return response.json();
             })
             .then(function(dataDropDownAges){
-                showDropDown.dropDownAges(dataDropDownAges);
+                
+                showDropDown.dropDownAges(dataDropDownAges, age);
+
             });
             // condition si vide = erreur ?
 
@@ -21,7 +21,7 @@ const showDropDown= {
                 return response.json();
             })
             .then(function(dataDropDownTailles){
-                showDropDown.dropDownTailles(dataDropDownTailles);
+                showDropDown.dropDownTailles(dataDropDownTailles, taille);
             });
             // condition si vide = erreur ?
 
@@ -31,15 +31,15 @@ const showDropDown= {
                 return response.json();
             })
             .then(function(dataDropDownPoids){
-                showDropDown.dropDownPoids(dataDropDownPoids);
+                showDropDown.dropDownPoids(dataDropDownPoids, poid);
             });
             // condition si vide = erreur ?
         
     },
 
     // creation et affichage du contenue liste ages
-    dropDownAges: function (dataDropDownAges){
-
+    dropDownAges: function (dataDropDownAges, age){
+    
         const dropDownAges = document.getElementById('dropDownAges');
 
         dataDropDownAges.forEach(function (ages) {
@@ -47,11 +47,15 @@ const showDropDown= {
             optionElt.value = ages.id;
             optionElt.textContent = ages.libelle;
             dropDownAges.appendChild(optionElt);
+            // affichage de l'age en cours
+            if (ages.id === age) {
+                optionElt.selected = true; // Sélectionnez l'option de la taille souhaitée
+              }
         });
     },
 
     // creation et affichage du contenue liste tailles
-    dropDownTailles: function (dataDropDownTailles){
+    dropDownTailles: function (dataDropDownTailles, taille){
 
         const dropDownTailles = document.getElementById('dropDownTailles');
 
@@ -60,11 +64,15 @@ const showDropDown= {
             optionElt.value = tailles.id;
             optionElt.textContent = tailles.libelle;
             dropDownTailles.appendChild(optionElt);
+            // affichage de la taille en cours
+            if (tailles.id === taille) {
+                optionElt.selected = true; // Sélectionnez l'option de la taille souhaitée
+              }
         });
     },
 
     // creation et affichage du contenue liste ages
-    dropDownPoids: function (dataDropDownPoids){
+    dropDownPoids: function (dataDropDownPoids, poid){
 
         const dropDownPoids = document.getElementById('dropDownPoids');
 
@@ -73,6 +81,10 @@ const showDropDown= {
             optionElt.value = poids.id;
             optionElt.textContent = poids.libelle;
             dropDownPoids.appendChild(optionElt);
+            // affichage du poids en cours
+            if (poids.id === poid) {
+                optionElt.selected = true; // Sélectionnez l'option de la taille souhaitée
+              }
         });
     },
 }
