@@ -1,6 +1,9 @@
 const app = {
 
 
+ 
+
+
     baseEndpoint: {
         endpoint: 'http://localhost:8000/api/inscriptions/1',
         // endpoint2: 'http://localhost:8000/api/inscriptions',
@@ -9,8 +12,7 @@ const app = {
 // appel des fonction a l'ouverture du document
 init: function() {
     showData.init();
-   
-    
+ 
 }
 
 }

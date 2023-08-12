@@ -20,7 +20,7 @@ const showData = {
 
     // extraction des données et afichage
     extractData: function (bulletin, dateFormatee){
-        console.log(dateFormatee);  
+        // console.log(dateFormatee);  
             // champs non affichés 
            id_participant = bulletin.participant[0].bulletin_id;
            document.getElementById("participant_id1").textContent = id_participant;
