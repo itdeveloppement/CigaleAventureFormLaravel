@@ -7,8 +7,12 @@
     <!-- -->
     <meta name="app-url" content="{{ config('app.url') }}">
     <title>Formulaire activite Cigale Aventure</title>
-    <link rel="stylesheet" href="assets/css/reboot.css"> 
-    <link rel="stylesheet" href="assets/css/style.css">
+     <link rel="stylesheet" href="../../assets/css/reboot.css"> 
+    <link rel="stylesheet" href="../../assets/css/style.css">
+ <!--
+    <link rel="stylesheet" href="{{asset('css/style.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/reboot.css')}}">
+     -->
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

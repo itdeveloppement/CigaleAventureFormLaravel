@@ -1,13 +1,16 @@
 
 <?php include "template/header.php"; ?>
 
+<!-- <a href="{{route('/inscriptions',['variable'=>2])}}">Lien avec Variable</a> -->
+
 
 <body>
+   
     <div class="container">
 
         <div class="image_montagne" >
             
-            <img class="image_logo" src="assets/images/CigAve_bandeau.png" alt="image de montagnes et vallées">
+            <img class="image_logo" src="../../assets/images/CigAve_bandeau.png" alt="image de montagnes et vallées">
             <!-- <a class="text_faq" href="">F.A.Q</a> -->
 
         </div>
@@ -82,8 +85,9 @@
         </div>
     </div>
        
-        <script src="../assets/js/showData.js"></script>
-        <script src="../assets/js/showDropDown.js"></script>
-        <script src="../assets/js/app.js"></script>
+        <script src="../../assets/js/showData.js"></script>
+        <script src="../../assets/js/showDropDown.js"></script>
+        toot
+        <script src="../../assets/js/app.js"></script>
 
         
