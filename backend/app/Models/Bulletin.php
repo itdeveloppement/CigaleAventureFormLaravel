@@ -8,7 +8,8 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Bulletin extends Model
 {
-   
+  
+    
  /**
      * Methode pour recuperer la session d'un bulletin
      * 

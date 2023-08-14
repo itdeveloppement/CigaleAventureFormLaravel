@@ -1,19 +1,23 @@
 const showData = {
 
-    init: function() {
-        
+    init: function(id) {
+        // id = 1;
+        console.log(id);
+        // id =1 ; // ${id}
         // recuperation des donnéers de la bdd (bulletin et participants)
-        fetch(app.baseEndpoint.endpoint)
+        fetch(`http://localhost:8000/api/inscriptions/${id}`,)    
+        // fetch(app.baseEndpoint.endpoint)
             .then( function(response) {
+                console.log('Réponse Fetch:', response);
                 return response.json();
+             
             })
             .then(function(bulletin) {
-                
+                console.log('Réponse apres exraction json:', bulletin);
+           
                 showData.extractData(bulletin);
                 showData.selectDatasParticipant(bulletin);
                
-                
-                // return bulletin
             });
             // condition si erreur ?    
     },
@@ -81,7 +85,6 @@ const showData = {
 
         showData.extractDataDate(dateFormatee);
         },
-
 
         // LISTE DES PARTICIPANTS
 

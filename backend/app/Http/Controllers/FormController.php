@@ -16,6 +16,7 @@ class FormController extends Controller
      */
      public function bull($id)
      {
+        \Log::debug('test');
          $bulletin = Bulletin::find($id)->load(
             'session.calendrier', 
             'participant.taille', 
@@ -23,10 +24,11 @@ class FormController extends Controller
             'participant.age'
         );    
  
-         if($bulletin === null) {
-             return response(null, 404);
-         }
-         return $bulletin;  
+        if ($bulletin === null) {
+            return response()->json(null, 404);
+        }
+        $response = json_encode($bulletin);
+        return $response;   
      }
 
      /**
