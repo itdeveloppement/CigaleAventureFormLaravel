@@ -1,6 +1,8 @@
 const showData = {
 
     init: function(id) {
+
+        
         // id = 1;
         console.log(id);
         // id =1 ; // ${id}
@@ -464,7 +466,7 @@ const showData = {
         );
             const participant = await response.json();
             showData.deleteEltParticipant()
-            showData.init();
+            app.init();
 
             /* --------------------------------------------------
         // recuperation participant de l'id current
